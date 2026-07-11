@@ -1,7 +1,5 @@
 from backend.gemini_engine import ask_gemini
 
-response = ask_gemini(
-    "Explain what a rental agreement is in simple words."
-)
+response = ask_gemini("Say hello in one sentence.")
 
 print(response)
