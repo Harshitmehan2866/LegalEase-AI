@@ -13,10 +13,16 @@ from backend.qa_system import (
     ask_question
 )
 
+from utils.pdf_generator import (
+    generate_pdf
+)
+
+
 st.set_page_config(
     page_title="LegalEase AI",
     layout="wide"
 )
+
 with st.sidebar:
 
     st.header("About")
@@ -30,6 +36,7 @@ with st.sidebar:
     st.info(
         "This tool provides informational guidance and is not legal advice."
     )
+
 
 st.title("⚖️ LegalEase AI")
 
@@ -46,6 +53,7 @@ Upload:
 
 Get instant explanations and risk analysis.
 """)
+
 
 uploaded_file = st.file_uploader(
     "Upload a legal document",
@@ -75,14 +83,40 @@ if uploaded_file:
     ):
 
         with st.spinner(
-            "Analyzing..."
+            "Analyzing document..."
         ):
 
             result = simplify_document(
                 document_text
             )
 
-        st.write(result)
+        st.subheader(
+            "Document Analysis"
+        )
+
+        st.write(
+            result
+        )
+
+        pdf_file = generate_pdf(
+            result
+        )
+
+        with open(
+            pdf_file,
+            "rb"
+        ) as file:
+
+            st.download_button(
+                label="📥 Download Report",
+                data=file,
+                file_name="legal_report.pdf",
+                mime="application/pdf"
+            )
+
+    st.subheader(
+        "Ask Questions"
+    )
 
     question = st.text_input(
         "Ask a question about the document"
@@ -92,9 +126,19 @@ if uploaded_file:
         "Get Answer"
     ):
 
-        answer = ask_question(
-            document_text,
-            question
-        )
+        if question:
 
-        st.write(answer)
+            answer = ask_question(
+                document_text,
+                question
+            )
+
+            st.write(
+                answer
+            )
+
+        else:
+
+            st.warning(
+                "Please enter a question."
+            )

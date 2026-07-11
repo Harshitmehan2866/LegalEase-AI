@@ -6,18 +6,20 @@ def simplify_document(text):
     prompt = f"""
     You are an expert legal assistant.
 
-    Analyze the legal document and provide:
+    Analyze the document and provide:
 
-    1. Easy summary.
-    2. Important clauses.
-    3. User responsibilities.
-    4. Financial obligations.
-    5. Deadlines.
-    6. Hidden risks.
-    7. Risk score out of 100.
-    8. Recommendations.
+    1. Easy Summary
+    2. Payment Clauses
+    3. Privacy Clauses
+    4. Termination Clauses
+    5. Liability Clauses
+    6. User Responsibilities
+    7. Financial Obligations
+    8. Hidden Risks
+    9. Risk Score (0-100)
+    10. Final Recommendation
 
-    Keep the language simple.
+    Explain everything in simple language.
 
     Document:
 
