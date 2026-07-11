@@ -111,14 +111,19 @@ streamlit run app.py
 
 ## 🖼️ Screenshots
 
-Add your screenshots inside the `screenshots` folder.
+## 🖼️ Screenshots
 
-Example:
+### Home Page
 
-- Home page
-- Document upload
-- AI-generated summary
-- Question answering
+![Home Page](screenshots/home.png)
+
+### Question 1
+
+![Question 1](screenshots/question1.png)
+
+### Question 2
+
+![Question 2](screenshots/question2.png)
 
 ## 🎯 Sample Questions
 
